@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/23bdc54541ff426f88a471ab57155469/artifacts
+end_time: 1741257369079
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 23bdc54541ff426f88a471ab57155469
+run_name: brawny-mouse-375
+run_uuid: 23bdc54541ff426f88a471ab57155469
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741257368979
+status: 3
+tags: []
+user_id: aksha

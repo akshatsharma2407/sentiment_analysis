@@ -1,6 +1,6 @@
 data_ingestion : 
-    test_size : 0.35
+    test_size : 0.34
 features :
-    max_features : 110
+    max_features : 114
 model :
-    n_estimators : 111
+    n_estimators : 105

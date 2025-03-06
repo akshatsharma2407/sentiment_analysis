@@ -8,13 +8,9 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score, recall_score, roc_auc_score
 import logging
 import mlflow
-import dagshub
-
-dagshub.init(repo_owner='akshatsharma2407', repo_name='sentiment_analysis', mlflow=True)
 
 
-mlflow.set_tracking_uri('https://dagshub.com/akshatsharma2407/sentiment_analysis.mlflow')
-
+mlflow.set_tracking_uri('http://127.0.0.1:5000')
 
 logger = logging.getLogger(os.path.basename(__file__))
 logger.setLevel('DEBUG')

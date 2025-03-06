@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/168194249665866884/e580bb0b4b614bb6aa7df75b9571073b/artifacts
+end_time: 1741258632846
+entry_point_name: ''
+experiment_id: '168194249665866884'
+lifecycle_stage: active
+run_id: e580bb0b4b614bb6aa7df75b9571073b
+run_name: bold-elk-394
+run_uuid: e580bb0b4b614bb6aa7df75b9571073b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741258632717
+status: 3
+tags: []
+user_id: aksha

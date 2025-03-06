@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/168194249665866884/326aa240dc49486892a3cc7f0513bab9/artifacts
+end_time: 1741257975720
+entry_point_name: ''
+experiment_id: '168194249665866884'
+lifecycle_stage: active
+run_id: 326aa240dc49486892a3cc7f0513bab9
+run_name: placid-boar-384
+run_uuid: 326aa240dc49486892a3cc7f0513bab9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741257975611
+status: 3
+tags: []
+user_id: aksha

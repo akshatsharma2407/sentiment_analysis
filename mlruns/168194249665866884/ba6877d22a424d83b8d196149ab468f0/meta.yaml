@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/168194249665866884/ba6877d22a424d83b8d196149ab468f0/artifacts
+end_time: 1741257986104
+entry_point_name: ''
+experiment_id: '168194249665866884'
+lifecycle_stage: active
+run_id: ba6877d22a424d83b8d196149ab468f0
+run_name: exultant-whale-697
+run_uuid: ba6877d22a424d83b8d196149ab468f0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741257986009
+status: 3
+tags: []
+user_id: aksha

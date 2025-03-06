@@ -7,13 +7,8 @@ from sklearn.base import BaseEstimator
 import os 
 import logging
 import mlflow
-import dagshub
-import mlflow.sklearn
 
-dagshub.init(repo_owner='akshatsharma2407', repo_name='sentiment_analysis', mlflow=True)
-
-
-mlflow.set_tracking_uri('https://dagshub.com/akshatsharma2407/sentiment_analysis.mlflow')
+mlflow.set_tracking_uri('http://127.0.0.1:5000')
 
 logger = logging.getLogger(os.path.basename(__file__))
 logger.setLevel('DEBUG')
@@ -90,12 +85,11 @@ def main() -> None:
         mlflow.set_experiment('demo')
         with mlflow.start_run():
             mlflow.log_param('no of estimators',estimators)
-            mlflow.sklearn.log_model(clf,'model')
 
     except Exception as e:
         logger.error('main function exeuted ', e)
         raise
-
+    
 mlflow.set_experiment('demo')
 with mlflow.start_run():
     mlflow.log_artifact(__file__)

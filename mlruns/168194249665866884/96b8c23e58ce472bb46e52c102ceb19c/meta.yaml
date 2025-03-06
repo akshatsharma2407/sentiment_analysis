@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/168194249665866884/96b8c23e58ce472bb46e52c102ceb19c/artifacts
+end_time: 1741257829321
+entry_point_name: ''
+experiment_id: '168194249665866884'
+lifecycle_stage: active
+run_id: 96b8c23e58ce472bb46e52c102ceb19c
+run_name: rebellious-squid-886
+run_uuid: 96b8c23e58ce472bb46e52c102ceb19c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741257829212
+status: 3
+tags: []
+user_id: aksha
