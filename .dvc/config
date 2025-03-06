@@ -1,4 +1,4 @@
 [core]
-    remote = ak
-['remote "ak"']
-    url = C:\Users\aksha\AppData\Local\Temp
+    remote = newdata
+['remote "newdata"']
+    url = s3://akshats3dvc
