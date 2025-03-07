@@ -10,10 +10,10 @@ import logging
 import mlflow
 import dagshub
 
-dagshub.init(repo_owner='akshatsharma2407', repo_name='sentiment_analysis', mlflow=True)
+# dagshub.init(repo_owner='akshatsharma2407', repo_name='sentiment_analysis', mlflow=True)
 
 
-mlflow.set_tracking_uri('https://dagshub.com/akshatsharma2407/sentiment_analysis.mlflow')
+mlflow.set_tracking_uri('http://ec2-34-201-37-245.compute-1.amazonaws.com:5000/')
 
 
 logger = logging.getLogger(os.path.basename(__file__))

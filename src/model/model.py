@@ -1,3 +1,4 @@
+import mlflow.models
 import numpy as np
 import pandas as pd
 import pickle
@@ -9,11 +10,12 @@ import logging
 import mlflow
 import dagshub
 import mlflow.sklearn
+from sklearn.model_selection import GridSearchCV
 
-dagshub.init(repo_owner='akshatsharma2407', repo_name='sentiment_analysis', mlflow=True)
+# dagshub.init(repo_owner='akshatsharma2407', repo_name='sentiment_analysis', mlflow=True)
 
 
-mlflow.set_tracking_uri('https://dagshub.com/akshatsharma2407/sentiment_analysis.mlflow')
+mlflow.set_tracking_uri('http://ec2-34-201-37-245.compute-1.amazonaws.com:5000/')
 
 logger = logging.getLogger(os.path.basename(__file__))
 logger.setLevel('DEBUG')
@@ -54,17 +56,31 @@ def load_data(path : str) -> pd.DataFrame:
         logger.error('some error occured while loading data')
         raise
 
-def training(train_data : pd.DataFrame,estimators : int) -> BaseEstimator:
+def training(train_data : pd.DataFrame) -> BaseEstimator:
     try:
         X_train = train_data.iloc[:,0:-1].values
         y_train = train_data.iloc[:,-1].values
 
         # Define and train the model
 
-        clf = GradientBoostingClassifier(n_estimators=estimators)
-        clf.fit(X_train, y_train)
+        clf = GradientBoostingClassifier()
+
+        param_grid = {
+            'n_estimators' : [10,29,59],
+            'learning_rate' : [0.1,0.01,0.001]
+        }
+
+        grid_search = GridSearchCV(estimator=clf,param_grid=param_grid,cv=5,n_jobs=-1,verbose=2)
+
+        grid_search.fit(X_train, y_train)
+
+        signature = mlflow.models.infer_signature(X_train,grid_search.best_estimator_.predict(X_train))
+        mlflow.sklearn.log_model(grid_search.best_estimator_,'grandientboosting',signature=signature)
+
+        mlflow.sklearn.log_model(clf,'gradient descent best model',signature=signature)
+
         logger.debug('model trained !!')
-        return clf
+        return grid_search.best_estimator_
     
     except Exception as e:
         logger.error('some error occured while training the model ',e)
@@ -81,24 +97,20 @@ def dump_model(clf : BaseEstimator) -> None:
 
 def main() -> None:
     try:
-        estimators = load_params('params.yaml')
-        train_data = load_data('./data/features/train_bow.csv')
-        clf = training(train_data,estimators)
-        dump_model(clf)
-        logger.debug('main function executed')
-
+        mlflow.autolog()
         mlflow.set_experiment('demo')
         with mlflow.start_run():
-            mlflow.log_param('no of estimators',estimators)
-            mlflow.sklearn.log_model(clf,'model')
+            # estimators = load_params('params.yaml')
+            train_data = load_data('./data/features/train_bow.csv')
+            clf = training(train_data)
+
+            dump_model(clf)
+            logger.debug('main function executed')
 
     except Exception as e:
         logger.error('main function exeuted ', e)
         raise
-
-mlflow.set_experiment('demo')
-with mlflow.start_run():
-    mlflow.log_artifact(__file__)
+    
 
 if __name__ == '__main__':
     main()
